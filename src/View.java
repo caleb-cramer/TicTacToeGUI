@@ -142,12 +142,21 @@ public class View extends JFrame {
 
     public void resetGame(){
         String player1Name = JOptionPane.showInputDialog("Enter Player 1's name here");
-        name1.setText(player1Name);
+        if (player1Name.equals("")){
+            name1.setText("Player 1");
+        }
+        else
+            name1.setText(player1Name);
         wins1.setText("0");
         losses1.setText("0");
 
         String player2Name = JOptionPane.showInputDialog("Enter Player 2's name here");
-        name2.setText(player2Name);
+        if (player2Name.equals("")){
+            name2.setText("Player 2");
+        }
+        else
+            name2.setText(player1Name);
+
         wins2.setText("0");
         losses2.setText("0");
 
