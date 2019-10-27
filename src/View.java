@@ -8,21 +8,22 @@ public class View extends JFrame {
     protected JButton resetButton; //south
     protected JPanel scoreArea; //north
     protected JPanel gameGrid; //center
-    private JButton panel_1_1;
-    private JButton panel_1_2;
-    private JButton panel_1_3;
-    private JButton panel_2_1;
-    private JButton panel_2_2;
-    private JButton panel_2_3;
-    private JButton panel_3_1;
-    private JButton panel_3_2;
-    private JButton panel_3_3;
-    private JLabel name1;
-    private JLabel wins1;
-    private JLabel losses1;
-    private JLabel name2;
-    private JLabel wins2;
-    private JLabel losses2;
+    protected JButton panel_1_1;
+    protected JButton panel_1_2;
+    protected JButton panel_1_3;
+    protected JButton panel_2_1;
+    protected JButton panel_2_2;
+    protected JButton panel_2_3;
+    protected JButton panel_3_1;
+    protected JButton panel_3_2;
+    protected JButton panel_3_3;
+    protected JLabel name1;
+    protected JLabel wins1;
+    protected JLabel losses1;
+    protected JLabel name2;
+    protected JLabel wins2;
+    protected JLabel losses2;
+    protected JLabel statusLabel;
 
 
 
@@ -32,7 +33,7 @@ public class View extends JFrame {
         setupUI();
         pack();
     }
-    private void setupUI(){
+    protected void setupUI(){
         setVisible(true);
         setPreferredSize(new Dimension(400,400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,13 +47,13 @@ public class View extends JFrame {
         //end south area
 
         //Center area
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel,BoxLayout.Y_AXIS));
+        statusLabel = new JLabel("Player 1's Turn!");
+        statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        centerPanel.add(statusLabel);
+
         gameGrid = new JPanel();
-        Border playerUpdate = BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(),
-                "Player 1's Turn",
-                TitledBorder.CENTER,
-                TitledBorder.ABOVE_TOP,
-                new Font("Arial", Font.PLAIN, 25));
-        gameGrid.setBorder(playerUpdate);
         gameGrid.setLayout(new GridLayout(3,3));
 
         panel_1_1 = new JButton("1_1");
@@ -91,7 +92,9 @@ public class View extends JFrame {
         panel_3_3.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_3_3);
 
-        contentPanel.add(gameGrid,BorderLayout.CENTER);
+        centerPanel.add(gameGrid);
+
+        contentPanel.add(centerPanel,BorderLayout.CENTER);
         //end center area
 
         //North area
@@ -142,20 +145,29 @@ public class View extends JFrame {
 
     public void resetGame(){
         String player1Name = JOptionPane.showInputDialog("Enter Player 1's name here");
-        if (player1Name.equals("")){
+
+        try {
+            if (player1Name.equals("")){
+                name1.setText("Player 1");
+            }
+            else
+                name1.setText(player1Name);
+        } catch (NullPointerException e) {
             name1.setText("Player 1");
         }
-        else
-            name1.setText(player1Name);
         wins1.setText("0");
         losses1.setText("0");
 
         String player2Name = JOptionPane.showInputDialog("Enter Player 2's name here");
-        if (player2Name.equals("")){
+        try {
+            if (player2Name.equals("")){
+                name2.setText("Player 2");
+            }
+            else
+                name2.setText(player1Name);
+        } catch (NullPointerException e) {
             name2.setText("Player 2");
         }
-        else
-            name2.setText(player1Name);
 
         wins2.setText("0");
         losses2.setText("0");
