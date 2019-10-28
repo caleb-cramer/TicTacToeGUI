@@ -39,151 +39,279 @@ public class Controller {
         view.panel_1_1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_1_1.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_1_1.setText("X");
-                    model.calltoPlayerTurn(1-1,1-1, "X");
+                    if(model.calltoPlayerTurn(1-1,1-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_1_1.setText("O");
-                    model.calltoPlayerTurn(1 - 1, 1 - 1, "O");
+                    if(model.calltoPlayerTurn(1 - 1, 1 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
-
                 model.setPlayer1Turn();
-                view.panel_1_1.setEnabled(false);
+                view.switchStatus(model.getPlayer1Turn());
             }
         });
         view.panel_1_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_1_2.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_1_2.setText("X");
-                    model.calltoPlayerTurn(1-1,2-1, "X");
+                    if(model.calltoPlayerTurn(1-1,2-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_1_2.setText("O");
-                    model.calltoPlayerTurn(1 - 1, 2 - 1, "O");
+                    if(model.calltoPlayerTurn(1 - 1, 2 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
-
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-                view.panel_1_2.setEnabled(false);
             }
         });
         view.panel_1_3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_1_3.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_1_3.setText("X");
-                    model.calltoPlayerTurn(1-1,3-1, "X");
+                    if(model.calltoPlayerTurn(1-1,3-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_1_3.setText("O");
-                    model.calltoPlayerTurn(1 - 1, 3 - 1, "O");
+                    if(model.calltoPlayerTurn(1 - 1, 3 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-
-                view.panel_1_3.setEnabled(false);
             }
         });
         view.panel_2_1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_2_1.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_2_1.setText("X");
-                    model.calltoPlayerTurn(2-1,1-1, "X");
+                    if(model.calltoPlayerTurn(2-1,1-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_2_1.setText("O");
-                    model.calltoPlayerTurn(2 - 1, 1 - 1, "O");
+                    if(model.calltoPlayerTurn(2 - 1, 1 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-
-                view.panel_2_1.setEnabled(false);
             }
         });
         view.panel_2_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_2_2.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_2_2.setText("X");
-                    model.calltoPlayerTurn(2-1,2-1, "X");
+                    if(model.calltoPlayerTurn(2-1,2-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_2_2.setText("O");
-                    model.calltoPlayerTurn(2 - 1, 2 - 1, "O");
+                    if(model.calltoPlayerTurn(2 - 1, 2 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-
-                view.panel_2_2.setEnabled(false);
             }
         });
         view.panel_2_3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_2_3.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_2_3.setText("X");
-                    model.calltoPlayerTurn(2-1,3-1, "X");
+                    if(model.calltoPlayerTurn(2-1,3-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_2_3.setText("O");
-                    model.calltoPlayerTurn(2 - 1, 3 - 1, "O");
+                    if(model.calltoPlayerTurn(2 - 1, 3 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-                view.panel_2_3.setEnabled(false);
             }
         });
         view.panel_3_1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_3_1.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_3_1.setText("X");
-                    model.calltoPlayerTurn(3-1,1-1, "X");
+                    if(model.calltoPlayerTurn(3-1,1-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_3_1.setText("O");
-                    model.calltoPlayerTurn(3 - 1, 1 - 1, "O");
+                    if(model.calltoPlayerTurn(3 - 1, 1 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-                view.panel_3_1.setEnabled(false);
             }
         });
         view.panel_3_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_3_2.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_3_2.setText("X");
-                    model.calltoPlayerTurn(3-1,2-1, "X");
+                    if(model.calltoPlayerTurn(3-1,2-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_3_2.setText("O");
-                    model.calltoPlayerTurn(3 - 1, 2 - 1, "O");
+                    if(model.calltoPlayerTurn(3 - 1, 2 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-
-                view.panel_3_2.setEnabled(false);
             }
         });
         view.panel_3_3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                view.panel_3_3.setEnabled(false);
                 if (model.getPlayer1Turn()){
                     view.panel_3_3.setText("X");
-                    model.calltoPlayerTurn(3-1,3-1, "X");
+                    if(model.calltoPlayerTurn(3-1,3-1, "X")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 else {
                     view.panel_3_3.setText("O");
-                    model.calltoPlayerTurn(3 - 1, 3 - 1, "O");
+                    if(model.calltoPlayerTurn(3 - 1, 3 - 1, "O")){
+                        view.getStats(model.getWins1(),
+                                model.getWins2(),
+                                model.getLosses1(),
+                                model.getLosses2());
+                        view.gameOver(model.getPlayer1Turn());
+                        model.resetBoard();
+                    }
                 }
                 model.setPlayer1Turn();
+                view.switchStatus(model.getPlayer1Turn());
 
-
-                view.panel_3_3.setEnabled(false);
             }
         });
     }

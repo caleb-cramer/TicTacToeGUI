@@ -1,12 +1,17 @@
-import java.util.Scanner;
 //this is the board for the game
 public class Board {
     private Cell[][] board;
-    int totalmoves;
+    int wins1;
+    int wins2;
+    int losses1;
+    int losses2;
+    private int totalmoves;
+
+
 
     //main constructor
     public Board() {
-        totalmoves = 0;
+        wins1 = wins2 = losses1 = losses2 = totalmoves = 0;
         this.board = new Cell[3][3];
         //fill the board with "-"
         for (int i = 0; i < 3; i++) {
@@ -15,7 +20,9 @@ public class Board {
             }
         }
     }
-//    //prints out the current
+
+
+
     @Override
     public String toString() {
         String returnBoard = " ";
@@ -40,6 +47,18 @@ public class Board {
 
         //}
     }
+
+    public void resetBoard(){
+        totalmoves = 0;
+        this.board = new Cell[3][3];
+        //fill the board with "-"
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                this.board[i][j]=new Cell(new Coordinates(i,j), "-");
+            }
+        }
+    }
+
     //checks to see if playerSymbol is a winner
     //checks row win, column win, diag win, anti diag win
     public boolean isWinner(Coordinates guess, String playerSymbol){
@@ -88,7 +107,7 @@ public class Board {
     }
 
     //method to control the player turn
-    public void playerTurn(int col, int row, String pSymbol){
+    public boolean playerTurn(int col, int row, String pSymbol){
         Coordinates guess = new Coordinates(row, col);
 
         makeMove(guess, pSymbol);
@@ -96,34 +115,21 @@ public class Board {
         boolean win = isWinner(guess,pSymbol);
         System.out.println(toString());
         if (win){
-            System.out.println("gg @ "+ pSymbol);
+            if(pSymbol == "X"){
+                wins1++;
+                losses2++;
+            }
+            else{
+                losses1++;
+                wins2++;
+            }
+            System.out.println(wins1);
         }
         else if(totalmoves==9){
+            losses1++;
+            losses2++;
             System.out.println("scratch");
         }
-
+        return win;
     }
-    //main loop that calls other methods
-//    public void playGame(){
-//        boolean play = true;
-//        int totalMoves=0;
-//        //System.out.println("Player \"X\" is going first \n"+toString());
-//        while(play){
-//            if (totalMoves==9){
-//                System.out.println("Scratch game!");
-//                break;
-//            }
-//            if(totalMoves%2==0){
-//                if(playerTurn("X")) {
-//                    play=false;
-//                }
-//            }
-//            else{
-//                if(playerTurn("O")) {
-//                    play=false;
-//                }
-//            }
-//            totalMoves+=1;
-//        }
-//    }
 }

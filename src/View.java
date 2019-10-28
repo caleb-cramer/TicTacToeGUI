@@ -182,4 +182,72 @@ public class View extends JFrame {
         panel_2_3.setText("");
         panel_3_3.setText("");
     }
+
+    public void again(){
+        panel_1_1.setEnabled(true);
+        panel_1_2.setEnabled(true);
+        panel_1_3.setEnabled(true);
+        panel_2_1.setEnabled(true);
+        panel_2_2.setEnabled(true);
+        panel_2_3.setEnabled(true);
+        panel_3_1.setEnabled(true);
+        panel_3_2.setEnabled(true);
+        panel_3_3.setEnabled(true);
+
+        statusLabel.setText("Player 1's turn");
+
+        panel_1_1.setText("");
+        panel_2_1.setText("");
+        panel_3_1.setText("");
+        panel_1_2.setText("");
+        panel_2_2.setText("");
+        panel_3_2.setText("");
+        panel_1_3.setText("");
+        panel_2_3.setText("");
+        panel_3_3.setText("");
+    }
+
+    public void gameOver(boolean play1){
+        if(play1){
+            statusLabel.setText(name1.getText() + " won!");
+        }
+        else {
+            statusLabel.setText(name2.getText() + " won!");
+        }
+
+        String message = statusLabel.getText() + "\nWould you like to play again?";
+        String [] options = {"Exit", "Play Again"};
+        int result =  JOptionPane.showOptionDialog(null,
+                message,
+                "Game Over",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[1]);
+        if(result == 1){
+            again();
+        }
+        else{
+            System.exit(0);
+        }
+
+
+    }
+
+    public void getStats(int w1, int w2, int l1, int l2){
+        wins1.setText(Integer.toString(w1));
+        wins2.setText(Integer.toString(w2));
+        losses1.setText(Integer.toString(l1));
+        losses2.setText(Integer.toString(l2));
+    }
+
+    public void switchStatus(boolean a){
+        if(a){
+            statusLabel.setText("Player 1's Turn");
+        }
+        else {
+            statusLabel.setText("Player 2's Turn");
+        }
+    }
 }
