@@ -164,7 +164,7 @@ public class View extends JFrame {
                 name2.setText("Player 2");
             }
             else
-                name2.setText(player1Name);
+                name2.setText(player2Name);
         } catch (NullPointerException e) {
             name2.setText("Player 2");
         }
