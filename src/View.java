@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-/*View of MVC inherits JFrame */
+/*View of MVC inherits JFramem  */
 public class View extends JFrame {
     protected Controller controller;
     protected JButton resetButton; //south
