@@ -5,7 +5,7 @@ public class Board {
     int wins2;
     int losses1;
     int losses2;
-    private int totalmoves;
+    int totalmoves;
 
 
 
@@ -22,7 +22,7 @@ public class Board {
     }
 
 
-
+    //just for backend testing
     @Override
     public String toString() {
         String returnBoard = " ";
@@ -39,15 +39,13 @@ public class Board {
         }
         return returnBoard;
     }
+
     //checks if move is okay and then fills the spot with the correct symbol
     public void makeMove(Coordinates coordinates, String playerSymbol){
-        //if(isValidMove(coordinates)){
-
         (board[coordinates.getRow()][coordinates.getColumn()]).setSymbol(playerSymbol);
-
-        //}
     }
 
+    //clears board for new round
     public void resetBoard(){
         totalmoves = 0;
         this.board = new Cell[3][3];
@@ -123,12 +121,12 @@ public class Board {
                 losses1++;
                 wins2++;
             }
-            System.out.println(wins1);
         }
         else if(totalmoves==9){
             losses1++;
             losses2++;
-            System.out.println("scratch");
+            win = false;
+            System.out.println("Scratch game, both players lose");
         }
         return win;
     }

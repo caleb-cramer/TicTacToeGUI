@@ -1,13 +1,15 @@
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+
+/*View of MVC inherits JFrame */
 public class View extends JFrame {
     protected Controller controller;
     protected JButton resetButton; //south
     protected JPanel scoreArea; //north
     protected JPanel gameGrid; //center
+
+    //start of grid of buttons
     protected JButton panel_1_1;
     protected JButton panel_1_2;
     protected JButton panel_1_3;
@@ -17,78 +19,86 @@ public class View extends JFrame {
     protected JButton panel_3_1;
     protected JButton panel_3_2;
     protected JButton panel_3_3;
+    //end
+
+    //name, wins and losses of P1
     protected JLabel name1;
     protected JLabel wins1;
     protected JLabel losses1;
+
+    //name, wins and losses of P2
     protected JLabel name2;
     protected JLabel wins2;
     protected JLabel losses2;
     protected JLabel statusLabel;
 
 
-
+    //DVC
     public View(Controller c){
         super("Tic Tac Toe");
         this.controller = c;
         setupUI();
         pack();
     }
+
+    //setup the GUI
     protected void setupUI(){
+        //general setup
         setVisible(true);
         setPreferredSize(new Dimension(400,400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout());
 
-        //South area
+        //South area just has a button
         resetButton = new JButton("Reset Names and Stats");
         contentPanel.add(resetButton, BorderLayout.SOUTH);
         //end south area
 
-        //Center area
+        // Center area has a BoxLayout with a label and a grid
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel,BoxLayout.Y_AXIS));
+        //label
         statusLabel = new JLabel("Player 1's Turn!");
         statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         centerPanel.add(statusLabel);
-
+        //make the grid
         gameGrid = new JPanel();
         gameGrid.setLayout(new GridLayout(3,3));
-
-        panel_1_1 = new JButton("1_1");
+        //here are all the buttons to fill the grid
+        panel_1_1 = new JButton();
         panel_1_1.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_1_1);
 
-        panel_1_2 = new JButton("1_2");
+        panel_1_2 = new JButton();
         panel_1_2.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_1_2);
 
-        panel_1_3 = new JButton("1_3");
+        panel_1_3 = new JButton();
         panel_1_3.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_1_3);
 
-        panel_2_1 = new JButton("2_1");
+        panel_2_1 = new JButton();
         panel_2_1.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_2_1);
 
-        panel_2_2 = new JButton("2_2");
+        panel_2_2 = new JButton();
         panel_2_2.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_2_2);
 
-        panel_2_3 = new JButton("2_3");
+        panel_2_3 = new JButton();
         panel_2_3.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_2_3);
 
-        panel_3_1 = new JButton("3_1");
+        panel_3_1 = new JButton();
         panel_3_1.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_3_1);
 
-        panel_3_2 = new JButton("3_2");
+        panel_3_2 = new JButton();
         panel_3_2.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_3_2);
 
-        panel_3_3 = new JButton("3_3");
+        panel_3_3 = new JButton();
         panel_3_3.setFont(new Font("Arial", Font.BOLD, 40));
         gameGrid.add(panel_3_3);
 
@@ -97,10 +107,12 @@ public class View extends JFrame {
         contentPanel.add(centerPanel,BorderLayout.CENTER);
         //end center area
 
-        //North area
+        //North area has a grid of labels
+        //grid
         scoreArea = new JPanel();
         scoreArea.setLayout(new GridLayout(0,2));
 
+        //text labels
         JLabel nameTitle1 = new JLabel("Name: ");
         JLabel winsTitle1 = new JLabel("Wins: ");
         JLabel lossesTitle1 = new JLabel("Losses: ");
@@ -108,6 +120,7 @@ public class View extends JFrame {
         JLabel winsTitle2 = new JLabel("Wins: ");
         JLabel lossesTitle2 = new JLabel("Losses: ");
 
+        //value labels
         JPanel player1Score = new JPanel();
         player1Score.setBorder(BorderFactory.createTitledBorder("Player 1(X)"));
         player1Score.setLayout(new GridLayout(3,2));
@@ -143,6 +156,7 @@ public class View extends JFrame {
         getContentPane().add(contentPanel);
     }
 
+    //Function to use when reset button is clicked
     public void resetGame(){
         String player1Name = JOptionPane.showInputDialog("Enter Player 1's name here");
 
@@ -183,6 +197,7 @@ public class View extends JFrame {
         panel_3_3.setText("");
     }
 
+    //function to play new game
     public void again(){
         panel_1_1.setEnabled(true);
         panel_1_2.setEnabled(true);
@@ -207,13 +222,8 @@ public class View extends JFrame {
         panel_3_3.setText("");
     }
 
-    public void gameOver(boolean play1){
-        if(play1){
-            statusLabel.setText(name1.getText() + " won!");
-        }
-        else {
-            statusLabel.setText(name2.getText() + " won!");
-        }
+    //function for ending of game
+    public void gameOver(){
 
         String message = statusLabel.getText() + "\nWould you like to play again?";
         String [] options = {"Exit", "Play Again"};
@@ -231,10 +241,18 @@ public class View extends JFrame {
         else{
             System.exit(0);
         }
-
-
     }
 
+    public void winStatus(boolean win){
+        if(win){
+            statusLabel.setText(name1.getText() + " won!");
+        }
+        else {
+            statusLabel.setText(name2.getText() + " won!");
+        }
+    }
+
+    //updates win/loss/tie
     public void getStats(int w1, int w2, int l1, int l2){
         wins1.setText(Integer.toString(w1));
         wins2.setText(Integer.toString(w2));
@@ -242,8 +260,9 @@ public class View extends JFrame {
         losses2.setText(Integer.toString(l2));
     }
 
-    public void switchStatus(boolean a){
-        if(a){
+    //changes the status label to show turn
+    public void switchStatus(boolean turn){
+        if(turn){
             statusLabel.setText("Player 1's Turn");
         }
         else {
